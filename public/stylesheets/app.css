@@ -1,0 +1,47 @@
+.alert-size {
+  width: 35%;
+  margin: auto;
+  text-align: center;
+}
+.image {
+  width: 100%;
+  height: 400px; /* Set the desired height for the square shape */
+  object-fit: cover;
+}
+img.img-thumbnail {
+  border: none;
+  width: 100%;
+  height: 175px;
+  padding: 3;
+  margin: 0;
+  object-fit: cover;
+}
+
+/* mapboxgl styles */
+
+.mapboxgl-popup-content {
+  padding: 0;
+}
+.mapboxgl-popup-content a {
+  display: block;
+}
+
+.mapboxgl-popup-content p,
+.mapboxgl-popup-content a {
+  font-size: 1.25em;
+  text-align: center;
+  text-decoration: none;
+  padding: 2px;
+}
+.mapboxgl-popup-close-button {
+  color: white;
+}
+
+#cluster-map {
+  width: 100%;
+  height: 500px;
+}
+#map {
+  width: 100%;
+  height: 300px;
+}
