@@ -125,11 +125,6 @@ app.use((req, res, next) => {
     next()
 })
 
-app.get("/fakeUser", async (req, res) => {
-    const user = new User({ email: "tomshkd2@gmail.com", username: "tomshkd2" })
-    const registeredUser = await User.register(user, "nugget")
-    res.send(registeredUser)
-})
 
 
 // using routes:
