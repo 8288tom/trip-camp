@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config()
 }
-
+console.log(process.env.NODE_ENV)
 
 const express = require("express");
 const path = require("path");
@@ -85,30 +85,31 @@ app.use(flash());
 
 app.use(mongoSanitize());
 app.use(helmet({
-    xContentTypeOptions: false
+    xContentTypeOptions: false,
+    contentSecurityPolicy: false,
 }))
 
 
-app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: [],
-            connectSrc: ["'self'", ...helmetConfig.connectSrcUrls],
-            scriptSrc: ["'unsafe-inline'", "'self'", ...helmetConfig.scriptSrcUrls],
-            styleSrc: ["'self'", "'unsafe-inline'", ...helmetConfig.styleSrcUrls],
-            workerSrc: ["'self'", "blob:"],
-            objectSrc: [],
-            imgSrc: [
-                "'self'",
-                "blob:",
-                "data:", ...helmetConfig.imgSrcUrls
-            ],
-            fontSrc: ["'self'", ...helmetConfig.fontSrcUrls],
-            upgradeInsecureRequests: null,
-            reportUri: null
-        },
-    })
-);
+// app.use(
+//     helmet.contentSecurityPolicy({
+//         directives: {
+//             defaultSrc: [],
+//             connectSrc: ["'self'", ...helmetConfig.connectSrcUrls],
+//             scriptSrc: ["'unsafe-inline'", "'self'", ...helmetConfig.scriptSrcUrls],
+//             styleSrc: ["'self'", "'unsafe-inline'", ...helmetConfig.styleSrcUrls],
+//             workerSrc: ["'self'", "blob:"],
+//             objectSrc: [],
+//             imgSrc: [
+//                 "'self'",
+//                 "blob:",
+//                 "data:", ...helmetConfig.imgSrcUrls
+//             ],
+//             fontSrc: ["'self'", ...helmetConfig.fontSrcUrls],
+//             upgradeInsecureRequests: null,
+//             reportUri: null
+//         },
+//     })
+// );
 
 app.use(passport.initialize());
 app.use(passport.session());
