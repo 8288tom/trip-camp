@@ -20,8 +20,8 @@ const User = require("./models/user")
 const mongoSanitize = require('express-mongo-sanitize');
 const helmetConfig = require("./helmetConfig")
 const favicon = require('express-favicon');
-const dbUrl = process.env.DB_URL;
-// const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp"
+// const dbUrl = process.env.DB_URL;
+const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp"
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -90,26 +90,26 @@ app.use(helmet({
 }))
 
 
-// app.use(
-//     helmet.contentSecurityPolicy({
-//         directives: {
-//             defaultSrc: [],
-//             connectSrc: ["'self'", ...helmetConfig.connectSrcUrls],
-//             scriptSrc: ["'unsafe-inline'", "'self'", ...helmetConfig.scriptSrcUrls],
-//             styleSrc: ["'self'", "'unsafe-inline'", ...helmetConfig.styleSrcUrls],
-//             workerSrc: ["'self'", "blob:"],
-//             objectSrc: [],
-//             imgSrc: [
-//                 "'self'",
-//                 "blob:",
-//                 "data:", ...helmetConfig.imgSrcUrls
-//             ],
-//             fontSrc: ["'self'", ...helmetConfig.fontSrcUrls],
-//             upgradeInsecureRequests: null,
-//             reportUri: null
-//         },
-//     })
-// );
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...helmetConfig.connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...helmetConfig.scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...helmetConfig.styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:", ...helmetConfig.imgSrcUrls
+            ],
+            fontSrc: ["'self'", ...helmetConfig.fontSrcUrls],
+            upgradeInsecureRequests: null,
+            reportUri: null
+        },
+    })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -29,17 +29,19 @@ module.exports.fontSrcUrls = [];
 module.exports.imgSrcUrls = ["https://res.cloudinary.com/dcvbxxryo/",
     "https://res.cloudinary.com/dcvbxxryo/image/upload",
     "https://images.unsplash.com/",
+    "https://res.cloudinary.com/ *"
+
 
 ]
 
 
 
-const cloudinaryImgsUrl = function () {
-    imagesObject.images.forEach((element) => {
-        module.exports.imgSrcUrls.push(element.url);
-        const transformedUrl = element.url.replace("/upload/", "/upload/w_200/");
-        module.exports.imgSrcUrls.push(transformedUrl);
-    });
-};
+// const cloudinaryImgsUrl = function () {
+//     imagesObject.images.forEach((element) => {
+//         module.exports.imgSrcUrls.push(element.url);
+//         const transformedUrl = element.url.replace("/upload/", "/upload/w_200/");
+//         module.exports.imgSrcUrls.push(transformedUrl);
+//     });
+// };
 
-cloudinaryImgsUrl()
+// cloudinaryImgsUrl()
